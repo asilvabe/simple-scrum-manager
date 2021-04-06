@@ -1,7 +1,6 @@
 @extends('layouts.main')
 @section('content-top')
     <div class="container">
-        @include('main-navbar')
         @yield('admin-content-top')
     </div>
 @endsection
