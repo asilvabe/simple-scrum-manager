@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TeamController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::name('teams.index')->get('teams', [TeamController::class, 'index']);
+Route::name('teams.show')->get('teams/{team}', [TeamController::class, 'show']);
