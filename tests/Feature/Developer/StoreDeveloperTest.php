@@ -33,7 +33,7 @@ class StoreDeveloperTest extends TestCase
     {
         $user = User::factory()->create();
 
-        $response = $this->actingAs($user)->post(route(self::ROUTE, $this->developerData()));
+        $response = $this->actingAs($user)->post(route(self::ROUTE), $this->developerData());
 
         $developer = Developer::first();
 
@@ -52,7 +52,7 @@ class StoreDeveloperTest extends TestCase
 
         $user = User::factory()->create();
 
-        $response = $this->actingAs($user)->post(route(self::ROUTE, $data));
+        $response = $this->actingAs($user)->post(route(self::ROUTE), $data);
 
        $response->assertSessionHasErrors($field);
     }
@@ -60,7 +60,7 @@ class StoreDeveloperTest extends TestCase
     /**
      * @test
      */
-    public function anAuthenticatedUserCannotStoreADeveloperDueToEmailDuplicated()
+    public function anAuthenticatedUserCannotStoreADeveloperDueToDuplicatedEmail()
     {
 
         $user = User::factory()->create();
@@ -68,7 +68,7 @@ class StoreDeveloperTest extends TestCase
             'email' => 'test@test.com'
         ]);
 
-        $response = $this->actingAs($user)->post(route(self::ROUTE, $this->developerData()));
+        $response = $this->actingAs($user)->post(route(self::ROUTE), $this->developerData());
 
         $response->assertSessionHasErrors('email');
     }
