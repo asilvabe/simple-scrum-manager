@@ -8,6 +8,9 @@
                 <b-navbar-item href="{{ route('teams.index') }}">
                     @lang('Teams')
                 </b-navbar-item>
+                <b-navbar-item href="{{ route('developers.index') }}">
+                    @lang('developers.title')
+                </b-navbar-item>
             @endauth
         </template>
         <template #end>
