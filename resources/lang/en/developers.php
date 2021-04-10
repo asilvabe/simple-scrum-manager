@@ -9,6 +9,8 @@ return [
         'level' => 'Level'
     ],
     'messages' => [
-        'empty' => 'No developers were found'
+        'empty' => 'No developers were found',
+        'cannot_delete' => 'The developer could not be deleted',
+        'deleted' => 'The developer was deleted successfuly',
     ]
 ];

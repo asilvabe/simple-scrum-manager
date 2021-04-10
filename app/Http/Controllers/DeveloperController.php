@@ -6,6 +6,7 @@ use App\Models\Developer;
 use App\ViewModels\Developer\IndexViewModel;
 use App\ViewModels\Developer\ShowViewModel;
 use App\ViewModels\ViewModel;
+use Exception;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
@@ -68,14 +69,16 @@ class DeveloperController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function destroy(Developer $developer)
     {
-        //
+        try {
+            $developer->delete();
+        } catch (Exception $e) {
+            return redirect()->route('developers.show', $developer)
+                ->withError(trans('developers.messages.cannot_delete'));
+        }
+
+        return redirect()->route('developers.index')
+            ->withSuccess(trans('developers.messages.deleted'));
     }
 }
