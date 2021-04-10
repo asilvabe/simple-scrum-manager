@@ -18,4 +18,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('teams', TeamController::class)->only(['index', 'show'])->middleware('auth');
+Route::resource('teams', TeamController::class)->middleware('auth');

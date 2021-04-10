@@ -19,6 +19,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property null|int sp_assigned
  * @property null|int sp_consumed
  * @property User scrumMaster
+ * @property int scrum_master_id
  */
 class Team extends Model
 {

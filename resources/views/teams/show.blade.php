@@ -1,10 +1,4 @@
 @extends('layouts.site')
-@push('toolbar')
-    <a href="{{ route('teams.index') }}" class="button is-primary">
-        <b-icon icon="arrow-left-thick"></b-icon>
-        <span>@lang('Back')</span>
-    </a>
-@endpush
 @push('site-content')
     <div class="columns">
         <div class="column">
@@ -43,5 +37,12 @@
 @endpush
 @push('site-content-bottom')
     @include('teams.show.developers')
+    <hr>
     @include('teams.show.sprints')
+@endpush
+@push('site-content-bottom')
+    <delete-form-component>
+        @csrf
+        @method('DELETE')
+    </delete-form-component>
 @endpush
