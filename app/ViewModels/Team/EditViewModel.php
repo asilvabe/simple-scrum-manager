@@ -27,6 +27,10 @@ class EditViewModel extends ViewModel
             'back' => [
                 'route' => route('teams.show', $this->model),
             ],
+            'index' => [
+                'route' => route('teams.index'),
+                'text' => trans('Teams')
+            ],
             'destroy' => [
                 'route' => route('teams.destroy', $this->model),
             ]
