@@ -28,7 +28,7 @@ class DeleteDeveloperTest extends TestCase
     /**
      * @test
      */
-    public function anUnauthenticatedUserCanDeleteADeveloper()
+    public function anAuthenticatedUserCanDeleteADeveloper()
     {
         $user = User::factory()->create();
         $developer = Developer::factory()->create();

@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Developer;
+use App\ViewModels\Developer\CreateViewModel;
 use App\ViewModels\Developer\IndexViewModel;
 use App\ViewModels\Developer\ShowViewModel;
-use App\ViewModels\ViewModel;
+
 use Exception;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
@@ -19,14 +20,9 @@ class DeveloperController extends Controller
         return view('developers.index', $viewModel->toArray());
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function create(): View
     {
-        //
+        return view('developers.create', (new CreateViewModel())->toArray());
     }
 
     /**
