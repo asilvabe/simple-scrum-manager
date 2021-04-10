@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Developer;
 use App\ViewModels\Developer\IndexViewModel;
+use App\ViewModels\Developer\ShowViewModel;
+use App\ViewModels\ViewModel;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
@@ -36,15 +39,10 @@ class DeveloperController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function show(Developer $developer): View
     {
-        //
+        $viewModel= new ShowViewModel($developer);
+        return view('developers.show', $viewModel->toArray());
     }
 
     /**
