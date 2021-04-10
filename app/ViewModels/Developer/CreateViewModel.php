@@ -21,6 +21,15 @@ class CreateViewModel extends ViewModel
         ]);
     }
 
+    protected function buttons(): array
+    {
+        return [
+            'back' => [
+                'route' => route('developers.index'),
+            ],
+        ];
+    }
+
     protected function title(): string
     {
         return trans('developers.create');
