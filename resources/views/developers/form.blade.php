@@ -20,8 +20,8 @@
             message="{{ $errors->first('email') }}"
         >
             <b-input
-                name="name"
-                value="{{ old('name', $developer->email) }}"
+                name="email"
+                value="{{ old('email', $developer->email) }}"
                 required
             ></b-input>
         </b-field>
@@ -33,9 +33,9 @@
             message="{{ $errors->first('level') }}"
         >
             <b-select
-                name="scrum-master"
+                name="level"
                 placeholder="@lang('Select an option')"
-                value="{{ $developer->level }}"
+                value="{{ old('level', $developer->level) }}"
                 expanded
                 required>
                 <option

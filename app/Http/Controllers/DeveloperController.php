@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Actions\Developers\StoreOrUpdateTeam;
+use App\Http\Requests\Developers\StoreRequest;
 use App\Models\Developer;
 use App\ViewModels\Developer\CreateViewModel;
 use App\ViewModels\Developer\IndexViewModel;
@@ -25,15 +28,12 @@ class DeveloperController extends Controller
         return view('developers.create', (new CreateViewModel())->toArray());
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        //
+        $team = StoreOrUpdateTeam::execute($request->validated());
+
+        return redirect()->route('developers.show', $team)
+            ->withSuccess(trans('developers.messages.created'));
     }
 
     public function show(Developer $developer): View
