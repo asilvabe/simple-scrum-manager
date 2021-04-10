@@ -18,5 +18,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::name('teams.index')->get('teams', [TeamController::class, 'index']);
-Route::name('teams.show')->get('teams/{team}', [TeamController::class, 'show']);
+Route::resource('teams', TeamController::class)->only(['index', 'show'])->middleware('auth');

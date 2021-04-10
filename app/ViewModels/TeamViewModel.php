@@ -23,6 +23,7 @@ class TeamViewModel implements Arrayable
             'team' => $this->team,
             'scrumMaster' => $this->team->scrumMaster,
             'developers' => $this->team->developers,
+            'sprints' => $this->team->sprints,
         ];
     }
 }
