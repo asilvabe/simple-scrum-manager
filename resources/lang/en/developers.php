@@ -3,6 +3,7 @@
 return [
     'title' => 'Developers',
     'create' => 'Create a developer',
+    'edit' => 'Edit developer :developer',
     'fields' => [
         'name' => 'Name',
         'email' => 'Email',

@@ -7,6 +7,7 @@ use App\Actions\Developers\StoreOrUpdateTeam;
 use App\Http\Requests\Developers\StoreRequest;
 use App\Models\Developer;
 use App\ViewModels\Developer\CreateViewModel;
+use App\ViewModels\Developer\EditViewModel;
 use App\ViewModels\Developer\IndexViewModel;
 use App\ViewModels\Developer\ShowViewModel;
 
@@ -42,15 +43,10 @@ class DeveloperController extends Controller
         return view('developers.show', $viewModel->toArray());
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function edit(Developer $developer): View
     {
-        //
+        $viewModel = new EditViewModel($developer);
+        return view('developers.edit', $viewModel->toArray());
     }
 
     /**
