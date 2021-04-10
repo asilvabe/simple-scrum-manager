@@ -4,6 +4,11 @@
             <b-navbar-item href="{{ url('') }}">
                 Home
             </b-navbar-item>
+            @auth()
+                <b-navbar-item href="{{ route('teams.index') }}">
+                    @lang('Teams')
+                </b-navbar-item>
+            @endauth
         </template>
         <template #end>
             @stack('main-navbar-end')
