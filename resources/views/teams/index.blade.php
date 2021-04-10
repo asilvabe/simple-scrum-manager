@@ -43,7 +43,7 @@
     </div>
     @else
         @include('partials.messages.empty', ['message' => trans('No teams were found')])
-        <a href="#" class="button is-primary is-fullwidth">@lang('Create a team')</a>
+        <a href="{{ $buttons['create']['route'] }}" class="button is-primary is-fullwidth">@lang('Create a team')</a>
     @endif
 @endpush
 @push('site-content-bottom')
