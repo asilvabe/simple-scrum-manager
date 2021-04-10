@@ -4,8 +4,6 @@ namespace App\ViewModels\Developer;
 
 use App\Enums\DeveloperLevels;
 use App\Models\Developer;
-use App\Models\Team;
-use App\Models\User;
 use App\ViewModels\ViewModel;
 
 class EditViewModel extends ViewModel

@@ -30,9 +30,9 @@ class DeveloperController extends Controller
 
     public function store(StoreRequest $request): RedirectResponse
     {
-        $team = StoreOrUpdateDeveloper::execute($request->validated());
+        $developer = StoreOrUpdateDeveloper::execute($request->validated());
 
-        return redirect()->route('developers.show', $team)
+        return redirect()->route('developers.show', $developer)
             ->withSuccess(trans('developers.messages.created'));
     }
 
@@ -50,8 +50,8 @@ class DeveloperController extends Controller
 
     public function update(UpdateRequest $request, Developer $developer): RedirectResponse
     {
-        $team = StoreOrUpdateDeveloper::execute($request->validated(), $developer);
-        return redirect()->route('developers.show', $team)
+        $developer = StoreOrUpdateDeveloper::execute($request->validated(), $developer);
+        return redirect()->route('developers.show', $developer)
             ->withSuccess(trans('developers.messages.updated'));
     }
 
