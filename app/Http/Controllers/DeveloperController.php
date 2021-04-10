@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
-use App\Actions\Developers\StoreOrUpdateTeam;
+use App\Actions\Developers\StoreOrUpdateDeveloper;
 use App\Http\Requests\Developers\StoreRequest;
 use App\Http\Requests\Developers\UpdateRequest;
 use App\Models\Developer;
@@ -11,11 +10,9 @@ use App\ViewModels\Developer\CreateViewModel;
 use App\ViewModels\Developer\EditViewModel;
 use App\ViewModels\Developer\IndexViewModel;
 use App\ViewModels\Developer\ShowViewModel;
-
 use Exception;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 
 class DeveloperController extends Controller
 {
@@ -33,7 +30,7 @@ class DeveloperController extends Controller
 
     public function store(StoreRequest $request): RedirectResponse
     {
-        $team = StoreOrUpdateTeam::execute($request->validated());
+        $team = StoreOrUpdateDeveloper::execute($request->validated());
 
         return redirect()->route('developers.show', $team)
             ->withSuccess(trans('developers.messages.created'));
@@ -53,7 +50,7 @@ class DeveloperController extends Controller
 
     public function update(UpdateRequest $request, Developer $developer): RedirectResponse
     {
-        $team = StoreOrUpdateTeam::execute($request->validated(), $developer);
+        $team = StoreOrUpdateDeveloper::execute($request->validated(), $developer);
         return redirect()->route('developers.show', $team)
             ->withSuccess(trans('developers.messages.updated'));
     }

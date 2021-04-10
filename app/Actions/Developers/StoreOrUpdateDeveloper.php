@@ -4,7 +4,7 @@ namespace App\Actions\Developers;
 
 use App\Models\Developer;
 
-class StoreOrUpdateTeam
+class StoreOrUpdateDeveloper
 {
     public static function execute(array $data, Developer $developer = null): Developer
     {
