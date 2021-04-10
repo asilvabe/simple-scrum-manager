@@ -15,5 +15,6 @@ return [
         'deleted' => 'The developer was deleted successfuly',
         'create' => 'Create a new developer',
         'created' => 'Developer created successfully',
+        'updated' => 'Developer updated successfully',
     ]
 ];

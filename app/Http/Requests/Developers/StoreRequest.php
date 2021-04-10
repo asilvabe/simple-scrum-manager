@@ -21,7 +21,7 @@ class StoreRequest extends FormRequest
                 'required',
                 'max:120',
                 'email:rfc',
-                'unique:developers,email'
+                Rule::unique('developers')->ignore($this->route('developer'))
             ],
             'level' => ['required', Rule::in(DeveloperLevels::toArray())]
         ];
