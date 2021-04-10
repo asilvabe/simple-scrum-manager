@@ -18,7 +18,7 @@ class CreateDevelopersTable extends Migration
         Schema::create('developers', function (Blueprint $table) {
             $table->id();
             $table->string('name', 150);
-            $table->string('email', 120);
+            $table->string('email', 120)->unique();
             $table->enum('level', DeveloperLevels::toArray());
             $table->timestamps();
         });

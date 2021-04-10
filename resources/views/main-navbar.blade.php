@@ -4,6 +4,9 @@
             <b-navbar-item href="{{ url('') }}">
                 Home
             </b-navbar-item>
+            <b-navbar-item href="{{ route('developers.index') }}">
+                @lang('developers.title')
+            </b-navbar-item>
         </template>
         <template #end>
             @stack('main-navbar-end')
