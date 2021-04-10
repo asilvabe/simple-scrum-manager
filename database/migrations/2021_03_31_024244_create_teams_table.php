@@ -18,7 +18,10 @@ class CreateTeamsTable extends Migration
             $table->id();
             $table->string('name', 80);
             $table->unsignedBigInteger('scrum_master_id');
-            $table->foreign('scrum_master_id')->references('id')->on('people');
+            $table->unsignedInteger('sprints_count')->default(0);
+            $table->unsignedInteger('sp_assigned')->default(0);
+            $table->unsignedInteger('sp_consumed')->default(0);
+            $table->foreign('scrum_master_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

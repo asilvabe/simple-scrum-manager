@@ -4,11 +4,14 @@
         <div class="hero-body">
             <div class="level">
                 <div class="level-left">
-                    <div class="level-item"><h1 class="title">{{ $title }}</h1></div>
+                    <div class="level-item"><h1 class="title">{{ $texts['title'] }}</h1></div>
                 </div>
                 <div class="level-right">
                     <div class="level-item">
                         <div class="buttons is-right">
+                            @foreach($buttons as $template => $button)
+                                @include("partials.buttons.{$template}", $button)
+                            @endforeach
                             @stack('toolbar')
                         </div>
                     </div>

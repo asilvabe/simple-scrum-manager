@@ -17,10 +17,13 @@ class CreateSprintsTable extends Migration
         Schema::create('sprints', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Team::class)->constrained();
-            $table->string('objectives');
+            $table->string('name', 80);
+            $table->string('objectives', 255);
+            $table->unsignedInteger('sp_assigned')->default(0);
+            $table->unsignedInteger('sp_consumed')->default(0);
             $table->date('starts_at');
             $table->date('ends_at');
-            $table->date('closed_at')->nullable();
+            $table->date('completed_at')->nullable();
             $table->timestamps();
         });
     }

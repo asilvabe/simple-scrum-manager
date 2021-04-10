@@ -8,6 +8,6 @@ class Math
 {
     public static function percentage(int $portion, int $total): int
     {
-        return (100 * $portion) / $total;
+        return $total ? (100 * $portion) / $total : 0;
     }
 }

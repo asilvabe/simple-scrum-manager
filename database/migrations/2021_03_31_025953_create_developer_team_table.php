@@ -1,7 +1,6 @@
 <?php
 
-use App\Enums\DeveloperLevels;
-use App\Models\Person;
+use App\Models\Developer;
 use App\Models\Team;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -18,12 +17,12 @@ class CreateDeveloperTeamTable extends Migration
     {
         Schema::create('developer_team', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('developer_id');
+            $table->foreignIdFor(Developer::class)->constrained();
             $table->foreignIdFor(Team::class)->constrained();
-            $table->enum('level', DeveloperLevels::toArray());
+            $table->unsignedInteger('sprints_count')->default(0);
+            $table->unsignedInteger('sp_assigned')->default(0);
+            $table->unsignedInteger('sp_consumed')->default(0);
             $table->timestamps();
-
-            $table->foreign('developer_id')->references('id')->on('people');
         });
     }
 

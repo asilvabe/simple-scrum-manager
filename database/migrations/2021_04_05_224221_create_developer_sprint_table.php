@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Person;
+use App\Models\Developer;
 use App\Models\Sprint;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -18,12 +18,10 @@ class CreateDeveloperSprintTable extends Migration
         Schema::create('developer_sprint', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Sprint::class)->constrained();
-            $table->unsignedBigInteger('developer_id');
-            $table->unsignedBigInteger('story_points_assigned');
-            $table->unsignedBigInteger('story_points_consumed')->default(0);
+            $table->foreignIdFor(Developer::class)->constrained();
+            $table->unsignedBigInteger('sp_assigned');
+            $table->unsignedBigInteger('sp_consumed')->nullable();
             $table->timestamps();
-
-            $table->foreign('developer_id')->references('id')->on('people');
         });
     }
 
