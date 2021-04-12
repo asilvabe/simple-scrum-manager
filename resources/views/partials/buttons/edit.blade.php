@@ -1,4 +1,3 @@
-<a href="{{ $route }}" class="button is-primary">
+<a href="{{ $route }}" class="button" title="{{ $text ?? trans('common.edit')}}">
     <b-icon icon="{{ $icon ?? 'pencil' }}"></b-icon>
-    <span>{{ $text ?? trans('Edit')}}</span>
 </a>

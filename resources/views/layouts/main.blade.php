@@ -3,9 +3,11 @@
 @section('main')
     <div id="app">
         @include('main-navbar')
-        @yield('content-top')
-        @yield('content')
-        @yield('content-bottom')
+        <section class="section has-background-light">
+            @yield('content-top')
+            @yield('content')
+            @yield('content-bottom')
+        </section>
         @auth()
             <logout-component>
                 <form id="logoutForm" action="{{ route('logout') }}" method="POST">
@@ -23,11 +25,4 @@
 @endsection
 @section('footer')
     @stack('footer-top')
-    <footer class="footer">
-        <div class="content has-text-centered">
-            <a href="https://bulma.io" target="_blank">
-                <img src="https://bulma.io/images/made-with-bulma.png" alt="Made with Bulma" width="128" height="24">
-            </a>
-        </div>
-    </footer>
 @endsection

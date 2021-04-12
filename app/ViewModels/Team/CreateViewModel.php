@@ -21,6 +21,15 @@ class CreateViewModel extends ViewModel
         ]);
     }
 
+    public function buttons(): array
+    {
+        return [
+            'back' => [
+                'route' => route('teams.index')
+            ]
+        ];
+    }
+
     protected function title(): string
     {
         return trans('Create a new team');
