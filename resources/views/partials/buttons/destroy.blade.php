@@ -1,10 +1,3 @@
-<confirm-delete-component
-    title="@lang('Are you sure?')"
-    message="@lang('This action cannot be undone!')"
-    confirm-text="@lang('Delete')"
-    cancel-text="@lang('Cancel')"
-    route="{{ $route }}"
-    icon="{{ $icon ?? 'delete' }}"
-    label="{{ $text ?? trans('Delete') }}"
-    size={{ $size ?? null }}>
-</confirm-delete-component>
+<button class="button" type="button" title="{{ $text ?? trans('common.delete')}}" @click="$emit('confirm-delete', {{ json_encode(['route' => $route])  }})">
+    <b-icon type="is-danger" icon="{{ $icon ?? 'delete' }}"></b-icon>
+</button>

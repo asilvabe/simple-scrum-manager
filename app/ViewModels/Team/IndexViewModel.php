@@ -30,6 +30,6 @@ class IndexViewModel extends ViewModel
 
     protected function title(): string
     {
-        return trans('Index of teams');
+        return trans('teams.title');
     }
 }
