@@ -6,6 +6,9 @@ return [
             'error' => 'Your request cant be processed due to validation errors'
         ]
     ],
+    'back' => 'Back',
+    'create' => 'Create',
+    'edit' => 'Edit',
     'update' => 'Update',
     'save' => 'Save',
     'delete' => 'Delete',
