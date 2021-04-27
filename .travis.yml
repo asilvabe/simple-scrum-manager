@@ -1,0 +1,22 @@
+os: linux
+dist: bionic
+language: php
+php:
+  - 7.4
+
+services:
+  - mysql
+
+cache:
+  directories:
+    - node_modules
+    - vendor
+
+before_script:
+  - cp .env.travis .env
+  - sudo mysql -e 'CREATE DATABASE `simple-scrum-manager-test`;'
+  - composer self-update
+  - composer install --no-interaction
+
+script:
+  - php artisan test
