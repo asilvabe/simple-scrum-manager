@@ -8,13 +8,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 class DeveloperFactory extends Factory
 {
-    /**
-     * The name of the factory's corresponding model.
-     *
-     * @var string
-     */
     protected $model = Developer::class;
-
 
     public function definition(): array
     {

@@ -1,15 +1,21 @@
 <script>
 export default {
     render: () => null,
+    data() {
+        return {
+            message: null,
+            type: null,
+            duration: null,
+        }
+    },
     props: {
-        message: String,
-        duration: {
-            type: Number,
-            default: null,
+        queue: {
+            type: Boolean,
+            default: false,
         },
-        type: {
+        position: {
             type: String,
-            default: null,
+            default: 'is-bottom',
         }
     },
     methods: {
@@ -18,11 +24,45 @@ export default {
                 message: this.message,
                 type: this.type,
                 duration: this.duration,
+                queue: this.queue,
+                position: this.position,
             })
+        },
+        setDefaultParams() {
+            this.message = null;
+            this.type = null;
+            this.duration = null;
         }
     },
     mounted() {
-        this.notify();
+        this.$root.$on('notify:simple', message => {
+            this.setDefaultParams();
+            this.message = message;
+            this.notify();
+        });
+
+        this.$root.$on('notify:success', message => {
+            this.setDefaultParams();
+            this.message = message;
+            this.type = 'is-success';
+            this.notify();
+        });
+
+        this.$root.$on('notify:warning', message => {
+            this.setDefaultParams();
+            this.message = message;
+            this.type = 'is-warning';
+            this.notify();
+        });
+
+        this.$root.$on('notify:danger', message => {
+            this.setDefaultParams();
+            this.message = message;
+            this.duration = 5000;
+            this.type = 'is-danger';
+            this.notify();
+        });
     },
 }
 </script>
+

@@ -24,7 +24,7 @@ class TeamController extends Controller
 
     public function show(Team $team): View
     {
-        $team->load(['scrumMaster', 'developers']);
+        $team->load(['scrumMaster'])->loadCount('developers');
         $viewModel= new ShowViewModel($team);
         return view('teams.show', $viewModel->toArray());
     }

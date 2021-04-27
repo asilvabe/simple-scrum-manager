@@ -13,7 +13,6 @@ class ShowViewModel extends ViewModel
             'title' => $this->title(),
             'team' => $this->model,
             'scrumMaster' => $this->model->scrumMaster,
-            'developers' => $this->model->developers,
             'sprints' => $this->model->sprints,
         ]);
     }

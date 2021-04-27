@@ -8,32 +8,30 @@ trait HasSprintsStats
 {
     public function storyPointsConsumed(): ?int
     {
-        return (int) $this->sp_consumed;
+        return $this->sp_consumed;
     }
 
-    public function storyPointsAssigned(): int
+    public function storyPointsAssigned(): ?int
     {
-        return (int) $this->sp_assigned;
+        return $this->sp_assigned;
     }
 
-    public function sprintsCount(): int
+    public function sprintsCount(): ?int
     {
-        return (int) $this->sprints_count;
+        return $this->sprints_count;
     }
 
-    public function velocity(): int
+    public function velocity(): ?int
     {
-        return $this->sprintsCount() ? $this->storyPointsConsumed() / $this->sprintsCount() : 0;
+        return $this->sprintsCount() ? $this->storyPointsConsumed() / $this->sprintsCount() : null;
     }
 
-    public function compliance(): int
+    public function compliance(): ?int
     {
-        if ($assigned = $this->storyPointsAssigned()) {
-            $consumed = $this->storyPointsConsumed();
-
-            return Math::percentage($consumed, $assigned);
+        if ($this->sp_assigned) {
+            return Math::percentage($this->sp_consumed, $this->sp_assigned);
         }
 
-        return 0;
+        return null;
     }
 }
