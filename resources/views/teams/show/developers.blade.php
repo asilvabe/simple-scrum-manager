@@ -16,7 +16,7 @@
 @if($team->developers_count > 0)
     <developer-team-index-component route="{{ route('api.developer-teams.index', ['team' => $team->id]) }}">
         <b-table-column field="level" label="@lang('Level')" width="20" v-slot="developers">
-            <span class="tag is-info is-uppercase">@{{ developers.row.level }}</span>
+            <span class="tag is-info is-uppercase">@{{ developers.row.level ?? '-' }}</span>
         </b-table-column>
         <b-table-column field="name" label="@lang('Name')" width="auto" v-slot="developers">
             @{{ developers.row.name }}
@@ -25,22 +25,22 @@
             @{{ developers.row.email }}
         </b-table-column>
         <b-table-column field="sprints" label="@lang('Sprints')" width="20" v-slot="developers" centered>
-            <div style="width: 100%" class="tag is-info is-light" v-if="developers.row.sprints_count">@{{ developers.row.sprints_count }}</div>
+            <div style="width: 100%" class="tag is-info is-light" v-text="developers.row.sprints_count"></div>
         </b-table-column>
         <b-table-column field="spAsigned" label="@lang('Assigned')" width="20" v-slot="developers" centered>
-            <div style="width: 100%" class="tag is-info is-light" v-if="developers.row.sp_assigned">@{{ developers.row.sp_assigned }}</div>
+            <div style="width: 100%" class="tag is-info is-light" v-text="developers.row.sp_assigned"></div>
         </b-table-column>
         <b-table-column field="spConsumed" label="@lang('Consumed')" width="20" v-slot="developers" centered>
-            <div style="width: 100%" class="tag is-info is-light" v-if="developers.row.sp_consumed">@{{ developers.row.sp_consumed }}</div>
+            <div style="width: 100%" class="tag is-info is-light" v-text="developers.row.sp_consumed"></div>
         </b-table-column>
         <b-table-column field="velocity" label="@lang('Velocity')" width="20" v-slot="developers" centered>
-            <div style="width: 100%" class="tag is-info is-light" v-if="developers.row.velocity">@{{ developers.row.velocity }}</div>
+            <div style="width: 100%" class="tag is-info is-light" v-text="developers.row.velocity"></div>
         </b-table-column>
         <b-table-column field="compliance" label="@lang('Compliance')" width="20" v-slot="developers" centered>
-            <div style="width: 100%" class="tag is-info is-light" v-if="developers.row.compliance">@{{ developers.row.compliance }}%</div>
+            <div style="width: 100%" class="tag is-info is-light" v-text="developers.row.compliance"></div>
         </b-table-column>
-        <b-table-column field="actions" width="auto" v-slot="developers">
-            <div class="buttons is-right">
+        <b-table-column field="actions" label="&#8230;" width="auto" v-slot="developers" centered>
+            <div class="buttons is-centered">
                 <a class="button is-primary is-inverted is-small">
                     <b-icon icon="eye-outline"></b-icon>
                 </a>

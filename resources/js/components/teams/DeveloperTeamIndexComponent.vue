@@ -4,7 +4,10 @@
     </b-table>
 </template>
 <script>
+import NumberMixin from "../../mixins/NumberMixin";
 export default {
+    name: 'DeveloperTeamIndexComponent',
+    mixins: [NumberMixin],
     data: () => ({
         developers: [],
         loading: true,
@@ -22,11 +25,33 @@ export default {
     },
     methods: {
         get() {
+            this.loading = true
             axios.get(this.route)
                 .then(response => {
-                    this.developers = response.data.data
+                    this.developers = [];
+                    for (let developer of response.data.data) {
+                        this.developers.push({
+                            id: developer.id,
+                            level: developer.level,
+                            name: developer.name,
+                            email: developer.email,
+                            sprints_count: this.humanize(developer.sprints_count),
+                            sp_assigned: this.humanize(developer.sp_assigned),
+                            sp_consumed: this.humanize(developer.sp_consumed),
+                            velocity: this.humanize(developer.velocity),
+                            compliance: this.compliance(developer.compliance),
+                        });
+                    }
+                })
+                .finally(() => {
                     this.loading = false
                 })
+        },
+        humanize(value) {
+            return value ? this.commarize(parseInt(value)) : '-';
+        },
+        compliance(value) {
+            return value ? value.toString() + '%' : '-';
         }
     }
 }
