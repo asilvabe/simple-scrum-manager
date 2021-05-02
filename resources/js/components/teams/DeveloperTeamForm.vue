@@ -37,6 +37,7 @@
 import {debounce} from "lodash";
 
 export default {
+    name: 'DeveloperTeamForm',
     data: () => ({
         developers: [],
         errors: null,

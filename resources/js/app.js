@@ -4,11 +4,11 @@ require('./buefy')
 import DeleteComponent from "./components/DeleteComponent"
 import LogoutComponent from "./components/LogoutComponent"
 import NotificationComponent from "./components/NotificationComponent"
-import DeveloperTeamIndexComponent from "./components/teams/DeveloperTeamIndexComponent"
-import DeveloperTeamCreateComponent from "./components/teams/DeveloperTeamCreateComponent"
+import DeveloperTeamIndex from "./components/teams/DeveloperTeamIndex"
+import DeveloperTeamCreate from "./components/teams/DeveloperTeamCreate"
 import LoadingComponent from "./components/LoadingComponent"
 import NotifyComponent from "./components/NotifyComponent"
-import DeveloperTeamDeleteComponent from "./components/teams/DeveloperTeamDeleteComponent"
+import DeveloperTeamDelete from "./components/teams/DeveloperTeamDelete"
 
 const app = new Vue({
     el: '#app',
@@ -18,9 +18,9 @@ const app = new Vue({
         NotificationComponent,
         NotifyComponent,
         LoadingComponent,
-        DeveloperTeamIndexComponent,
-        DeveloperTeamCreateComponent,
-        DeveloperTeamDeleteComponent
+        DeveloperTeamIndex,
+        DeveloperTeamCreate,
+        DeveloperTeamDelete
     }
 })
 

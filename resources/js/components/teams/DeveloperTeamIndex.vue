@@ -6,8 +6,8 @@
 <script>
 import NumberMixin from "../../mixins/NumberMixin";
 export default {
-    name: 'DeveloperTeamIndexComponent',
     mixins: [NumberMixin],
+    name: 'DeveloperTeamIndex',
     data: () => ({
         developers: [],
         loading: true,

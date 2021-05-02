@@ -1,10 +1,11 @@
 <script>
-import DeveloperTeamFormComponent from "./DeveloperTeamFormComponent";
+import DeveloperTeamForm from "./DeveloperTeamForm";
 
 export default {
+    name: 'DeveloperTeamCreate',
     render: () => null,
     components: {
-        DeveloperTeamFormComponent
+        DeveloperTeamForm
     },
     props: {
         team: {
@@ -28,7 +29,7 @@ export default {
         showModal() {
             this.$buefy.modal.open({
                 parent: this,
-                component: DeveloperTeamFormComponent,
+                component: DeveloperTeamForm,
                 canCancel: ['escape', 'outside'],
                 props: {
                     team: this.team,

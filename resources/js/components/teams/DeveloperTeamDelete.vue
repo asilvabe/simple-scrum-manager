@@ -1,5 +1,6 @@
 <script>
 export default {
+    name: 'DeveloperTeamDelete',
     render: () => null,
     data: () => ({
         developer: null
