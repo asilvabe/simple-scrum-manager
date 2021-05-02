@@ -16,7 +16,7 @@ class EditViewModel extends ViewModel
     public function toArray(): array
     {
         return array_merge(parent::toArray(), [
-            'developer' => $this->model,
+            'developer' => $this->model(),
             'levels' => DeveloperLevels::toArray(),
         ]);
     }

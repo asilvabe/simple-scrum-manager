@@ -11,7 +11,7 @@ class ShowViewModel extends ViewModel
     {
         return array_merge(parent::toArray(), [
             'title' => $this->title(),
-            'developer' => $this->model,
+            'developer' => $this->model(),
         ]);
     }
 
@@ -22,16 +22,16 @@ class ShowViewModel extends ViewModel
                 'route' => route('developers.index'),
             ],
             'edit' => [
-                'route' => route('developers.edit', $this->model),
+                'route' => route('developers.edit', $this->model()),
             ],
             'destroy' => [
-                'route' => route('developers.destroy', $this->model),
+                'route' => route('developers.destroy', $this->model()),
             ],
         ];
     }
 
     protected function title(): string
     {
-        return $this->model->name;
+        return $this->model()->name;
     }
 }
