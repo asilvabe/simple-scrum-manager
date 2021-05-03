@@ -35,3 +35,9 @@
     </div>
     @include('partials.forms.delete')
 @endpush
+<script>
+    import DeveloperTeamComponent from "../../js/components/teams/DeveloperTeamComponent";
+    export default {
+        components: {DeveloperTeamComponent}
+    }
+</script>

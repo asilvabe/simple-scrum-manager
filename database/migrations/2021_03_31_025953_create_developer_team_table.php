@@ -17,12 +17,14 @@ class CreateDeveloperTeamTable extends Migration
     {
         Schema::create('developer_team', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Developer::class)->constrained();
-            $table->foreignIdFor(Team::class)->constrained();
-            $table->unsignedInteger('sprints_count')->default(0);
-            $table->unsignedInteger('sp_assigned')->default(0);
-            $table->unsignedInteger('sp_consumed')->default(0);
+            $table->foreignIdFor(Developer::class, 'developer_id')->constrained();
+            $table->foreignIdFor(Team::class, 'team_id')->constrained();
+            $table->unsignedInteger('sprints_count')->nullable();
+            $table->unsignedInteger('sp_assigned')->nullable();
+            $table->unsignedInteger('sp_consumed')->nullable();
             $table->timestamps();
+
+            $table->unique(['team_id', 'developer_id']);
         });
     }
 

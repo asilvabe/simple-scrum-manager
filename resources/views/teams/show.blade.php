@@ -38,9 +38,7 @@
     </div>
 @endpush
 @push('site-content-bottom')
-    <div class="box">
-        @include('teams.show.developers')
-    </div>
+    @include('teams.show.developers')
     <hr>
     <div class="box">
         @include('teams.show.sprints')

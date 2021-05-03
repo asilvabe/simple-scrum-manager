@@ -15,7 +15,7 @@ class IndexViewModel extends ViewModel
     public function toArray(): array
     {
         return array_merge(parent::toArray(), [
-            'developers' => $this->model->orderBy('name')->paginate(),
+            'developers' => $this->model()->orderBy('name')->paginate(),
         ]);
     }
 

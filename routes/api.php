@@ -1,6 +1,7 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\DeveloperSearchController;
+use App\Http\Controllers\Api\DeveloperTeamController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::name('api.')->middleware('auth')->group(function () {
+    Route::apiResource('developer-teams', DeveloperTeamController::class)->except('show');
+    Route::get('developers', [DeveloperSearchController::class, 'index']);
 });

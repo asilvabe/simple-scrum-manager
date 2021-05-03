@@ -15,6 +15,8 @@
                 </form>
             </logout-component>
         @endauth
+        <notification-component></notification-component>
+
         @if($messages->hasMessage())
             {!! $messages->notify() !!}
         @endif
