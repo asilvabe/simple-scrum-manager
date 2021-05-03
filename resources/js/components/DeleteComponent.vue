@@ -1,36 +1,29 @@
 <template>
-    <div>
-        <b-button
-            :label="this.label"
-            :icon-left="this.icon"
-            :size="this.size"
-            type="is-danger"
-            @click="confirmDeletion">
-        </b-button>
-    </div>
+    <form ref="deleteForm" :action="this.route" method="post" class="is-hidden">
+        <slot></slot>
+    </form>
 </template>
-
 <script>
 export default {
+    data: () => {
+        return {
+            route: null,
+        }
+    },
     props: {
         title: String,
         message: String,
         confirmText: String,
         cancelText: String,
-        route: String,
-        label: {
-            type: String,
-            default: null,
-        },
-        icon: String,
-        size: {
-            type: String,
-            default: null,
-        }
+    },
+    mounted() {
+        this.$root.$on('confirm-delete', data => {
+            this.route = data.route;
+            this.showConfirmationDialog();
+        });
     },
     methods: {
-        confirmDeletion() {
-            this.$root.$emit('prepare-for-deletion', {route: this.route});
+        showConfirmationDialog() {
             this.$buefy.dialog.confirm({
                 title: this.title,
                 message: this.message,
@@ -42,7 +35,7 @@ export default {
             })
         },
         deleteItem() {
-            this.$root.$emit('delete-item');
+            this.$refs.deleteForm.submit();
         }
     },
 

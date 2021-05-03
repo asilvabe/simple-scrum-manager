@@ -1,1 +1,1 @@
-<notification-component message="{{ $content }}" type="is-{{ $type }}"></notification-component>
+<notify-component message="{{ $content }}" type="{{ $type }}"></notify-component>

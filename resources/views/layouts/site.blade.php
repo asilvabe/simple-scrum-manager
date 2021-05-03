@@ -1,32 +1,26 @@
 @extends('layouts.main')
 @section('content-top')
-    <section class="hero is-small is-primary">
-        <div class="hero-body">
-            <div class="level">
-                <div class="level-left">
-                    <div class="level-item"><h1 class="title">{{ $texts['title'] }}</h1></div>
-                </div>
-                <div class="level-right">
-                    <div class="level-item">
-                        <div class="buttons is-right">
-                            @foreach($buttons as $template => $button)
-                                @include("partials.buttons.{$template}", $button)
-                            @endforeach
-                            @stack('toolbar')
-                        </div>
-                    </div>
+    <div class="level">
+        <div class="level-left">
+            <div class="level-item">
+                <h1 class="title">{{ $texts['title'] }}</h1>
+            </div>
+        </div>
+        <div class="level-right">
+            <div class="level-item">
+                <div class="buttons">
+                    @foreach($buttons as $template => $button)
+                        @include("partials.buttons.{$template}", $button)
+                    @endforeach
+                    @stack('toolbar')
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 @endsection
 @section('content')
-    <section class="section">
-        @stack('site-content')
-    </section>
+    @stack('site-content')
 @endsection
 @section('content-bottom')
-    <section class="section">
-        @stack('site-content-bottom')
-    </section>
+    @stack('site-content-bottom')
 @endsection

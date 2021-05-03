@@ -20,6 +20,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property null|int sp_consumed
  * @property User scrumMaster
  * @property int scrum_master_id
+ * @property int id
  */
 class Team extends Model
 {
@@ -33,7 +34,7 @@ class Team extends Model
 
     public function developers(): BelongsToMany
     {
-        return $this->belongsToMany(Developer::class)->withPivot(['sprints_count', 'sp_assigned','sp_consumed']);
+        return $this->belongsToMany(Developer::class)->using(DeveloperTeam::class);
     }
 
     public function sprints(): HasMany
